@@ -9,13 +9,14 @@ import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
+    path: "/",
+    Component: Layout,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/sign-in", element: <SignIn /> },
-      { path: "/sign-up", element: <SignUp /> },
-      { path: "/about", element: <About /> },
-      { path: "/profile", element: <Profile /> },
+      { index: true, Component: Home },
+      { path: "sign-in", Component: SignIn },
+      { path: "sign-up", Component: SignUp },
+      { path: "about", Component: About },
+      { path: "profile", Component: Profile },
     ],
   },
 ]);
