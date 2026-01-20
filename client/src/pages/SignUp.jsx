@@ -9,18 +9,17 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [e.target.id]: e.target.value,
-      };
-    });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.id]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
+      setError(null);
 
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -40,7 +39,7 @@ const SignUp = () => {
 
       setLoading(false);
       setError(null);
-      navigate('/sign-in');
+      navigate("/sign-in");
     } catch (error) {
       setLoading(false);
       setError(error.message);
